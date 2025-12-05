@@ -1,140 +1,138 @@
-package sc.practicaejemplo;
-
 import java.util.Scanner;
 import java.util.Random;
 
-public class PracticaEjemplo {
+public class ejemplo {
 
     private static Scanner sc = new Scanner(System.in);
-    private static Random ramdon = new Random();
+    private static Random random = new Random();
     private static final int Filas = 20;
     private static final int Columnas = 10;
     private static int[][] tablero = new int[Filas][Columnas];
 
     private static int[][] piezaI = {
-        {0, 1, 0, 0},
-        {0, 1, 0, 0},
-        {0, 1, 0, 0},
-        {0, 1, 0, 0}
+            { 0, 1, 0, 0 },
+            { 0, 1, 0, 0 },
+            { 0, 1, 0, 0 },
+            { 0, 1, 0, 0 }
     };
 
     private static int[][] piezaT = {
-        {0, 1, 0, 0},
-        {1, 1, 1, 0},
-        {0, 0, 0, 0},
-        {0, 0, 0, 0}
+            { 0, 1, 0, 0 },
+            { 1, 1, 1, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 }
     };
 
     private static int[][] piezaO = {
-        {1, 1, 0, 0},
-        {1, 1, 0, 0},
-        {0, 0, 0, 0},
-        {0, 0, 0, 0}
+            { 1, 1, 0, 0 },
+            { 1, 1, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 }
     };
 
-    private static int[][][] todasLasPiezas = {piezaI, piezaO, piezaT};
+    private static int[][][] todasLasPiezas = { piezaI, piezaO, piezaT };
 
     public static void main(String[] args) {
         boolean salir = false;
         int inicioFila = 0;
         int inicioColumna = 4;
-        int[][] piezaActua;
 
-        piezaActua = piezaAleatoria();
         int ejex = inicioColumna;
         int ejey = inicioFila;
 
+        int[][] piezaActual = obtenerPieza();
+
         iniciarTablero();
-        //colocarPiezaEnTablero(piezaI, inicioColumna, inicioFila);
-        mostrarTablero(piezaActua, ejex, ejey);
+        // colocarPiezaEnTablero(piezaActual, inicioColumna, inicioFila);
+        mostrarTablero(piezaActual, ejex, ejey);
 
         do {
             System.out.println("Comandos A/D(izq/der) W/S(arri/abajo");
             System.out.print("Ingrese un comnado: ");
             String entrada = sc.nextLine();
 
-            int anteriorx = ejex;
-            int anteriory = ejey;
+            int anteriorX = ejex;
+            int anterioY = ejey;
 
             if (entrada.equals("a")) {
                 ejex -= 1;
             } else if (entrada.equals("d")) {
                 ejex += 1;
             } else if (entrada.equals("w")) {
-                //Rotar figura
-                piezaActua = rotarPieza(piezaActua);
+                piezaActual=rotarPieza(piezaActual);
             } else if (entrada.equals("s")) {
                 ejey += 1;
             } else if (entrada.equals("l")) {
                 salir = true;
-            }else if(entrada.equals(" ")){
-                while(esMovimientoValido(piezaActua, ejex, ejey+1)){
+            } else if (entrada.equals(" ")) {
+                while (esMovimientoValido(piezaActual, ejex, ejey + 1)) {
                     ejey++;
                 }
-                
-                fijaPieza(piezaActua, ejex, ejey);
+
+                fijarPieza(piezaActual, ejex, ejey);
+                piezaActual = obtenerPieza();
                 ejex=inicioColumna;
                 ejey=inicioFila;
+
+                mostrarTablero(piezaActual, ejex, ejey);
+                continue;
+            }else if(entrada.equals("esc")){
+                salir=true;
+                continue;
             }
 
-            if (!esMovimientoValido(piezaActua, ejex, ejey)) {
-                ejex = anteriorx;
-                ejey = anteriory;
+            if (!esMovimientoValido(piezaActual, ejex, ejey)) {
+                ejex = anteriorX;
+                ejey = anterioY;
 
-                if (entrada.equals("s")) {
-                    fijaPieza(piezaActua, ejex, ejey);
-                    
-                    piezaActua = piezaAleatoria();
-                    ejex = inicioColumna;
-                    ejey = inicioFila;
+                if(entrada.equals("s")){
+                    fijarPieza(piezaActual, ejex, ejey);
+                    piezaActual = obtenerPieza();
+                    ejex=inicioColumna;
+                    ejey=inicioFila;   
+
+                    //Aqui Finaliza el juevo
+
                 }
+
             }
 
-            //colocarPiezaEnTablero(piezaI, ejex, ejey);
-            mostrarTablero(piezaActua, ejex, ejey);
+            mostrarTablero(piezaActual, ejex, ejey);
+
         } while (!salir);
-        /*mostrarTablero();
-        iniciarTablero();
-        colocarPiezaEnTablero(piezaI, 4, 0);
-        mostrarTablero();
-        
-        iniciarTablero();
-        colocarPiezaEnTablero(piezaI, 4, 10);
-        mostrarTablero();*/
 
     }
-    
+
     public static int[][] rotarPieza(int[][] pieza){
-        int [][] nuevaPieza = new int[4][4];
-        
-        //Intercambiar filas por columnas
+        int[][] nuevaPieza = new int[4][4];
+
+        //Copiar pieza
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 nuevaPieza[j][i]=pieza[i][j];
             }
         }
-        
-        //Hacer el reflejo hortizonatlmente
+
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 2; j++) {
-                int tem = nuevaPieza[i][j];
-                nuevaPieza[i][j]= nuevaPieza[i][3-j];     
-                nuevaPieza[i][3-j]=tem;
+                int temp = nuevaPieza[i][j];
+                nuevaPieza[i][j]=nuevaPieza[i][3-j];
+                nuevaPieza[i][3-j]= temp;
             }
         }
-        
+
         return nuevaPieza;
+
     }
 
-    public static void fijaPieza(int[][] pieza, int columna, int fila) {
+    public static void fijarPieza(int[][] pieza, int columna, int fila){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (pieza[i][j] == 1) {
+                if(pieza[i][j]==1){
                     int nuevaFila = fila + i;
-                    int nuevaColumna = columna + j;
-                    if (nuevaFila >= 0 && nuevaFila < Filas && 
-                        nuevaColumna >= 0 && nuevaColumna < Columnas) {
-                        tablero[nuevaFila][nuevaColumna] = 2; 
+                    int nuevaColuma = columna + j;
+                    if(nuevaFila >=0 && nuevaFila <Filas && nuevaColuma >=0 && nuevaColuma<Columnas){
+                        tablero[nuevaFila][nuevaColuma]=2;
                     }
                 }
             }
@@ -145,19 +143,17 @@ public class PracticaEjemplo {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (pieza[i][j] == 1) {
-                    int nuevFila = fila + i;
-                    int nuevaColumna = columna + j;
+                    int nuevaFila = fila + i;
+                    int nuevaColuma = columna + j;
 
-                    //varificar los mimites del tablero
-                    if (nuevaColumna < 0 || nuevaColumna >= Columnas) {
+                    if (nuevaColuma < 0 || nuevaColuma >= Columnas) {
                         return false;
                     }
-                    if (nuevFila < 0 || nuevFila >= Filas) {
+                    if (nuevaFila < 0 || nuevaFila >= Filas) {
                         return false;
                     }
 
-                    //Verificar si se encuentra un solido (2)
-                    if (tablero[nuevFila][nuevaColumna] == 2) {
+                    if (tablero[nuevaFila][nuevaColuma] == 2) {
                         return false;
                     }
                 }
@@ -166,8 +162,8 @@ public class PracticaEjemplo {
         return true;
     }
 
-    public static int[][] piezaAleatoria() {
-        int indiceAleatorio = ramdon.nextInt(todasLasPiezas.length);
+    public static int[][] obtenerPieza() {
+        int indiceAleatorio = random.nextInt(todasLasPiezas.length);
         return todasLasPiezas[indiceAleatorio];
     }
 
@@ -179,26 +175,25 @@ public class PracticaEjemplo {
         }
     }
 
-    public static void mostrarTablero(int[][] piezaActual, int columna, int Fila) {
-        // Crear un tablero temporal
+    public static void mostrarTablero(int[][] piezaActual, int columna, int fila) {
 
         int[][] tableroTemporal = new int[Filas][Columnas];
 
-        // Realizar una compia del tablero original
+        // Ralizamos la copia del tablero
         for (int i = 0; i < Filas; i++) {
             for (int j = 0; j < Columnas; j++) {
                 tableroTemporal[i][j] = tablero[i][j];
             }
         }
 
-        // Ahora vamos a agregar una pieza
+        // Piezas al tablero temporal
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (piezaActual[i][j] == 1) {
-                    int nuevaFila = Fila + i;
-                    int nuevaColumna = columna + j;
-                    if (nuevaFila >= 0 && nuevaFila < Filas && nuevaColumna >= 0 && nuevaColumna < Columnas) {
-                        tableroTemporal[nuevaFila][nuevaColumna] = 1;
+                    int nuevaFila = fila + i;
+                    int nuevaColuma = columna + j;
+                    if (nuevaFila >= 0 && nuevaFila < Filas && nuevaColuma >= 0 && nuevaColuma < Columnas) {
+                        tableroTemporal[nuevaFila][nuevaColuma] = 1;
                     }
                 }
             }
