@@ -1,0 +1,8 @@
+sc\ejemploestudiante\EjemploEstudiante.class
+sc\ejemploestudiante\modelos\Bibliotecario.class
+sc\ejemploestudiante\RepositorioBibliotecario.class
+sc\ejemploestudiante\modelos\Estudiante.class
+sc\ejemploestudiante\RepositorioEstudiante.class
+sc\ejemploestudiante\ControladorEstudiante.class
+sc\ejemploestudiante\modelos\Usuario.class
+sc\ejemploestudiante\Login.class
