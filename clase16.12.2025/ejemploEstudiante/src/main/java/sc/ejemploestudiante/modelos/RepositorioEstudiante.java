@@ -50,6 +50,10 @@ public class RepositorioEstudiante {
         return false;
     }
     
+    public Estudiante[] todosLosEstudiantes(){
+        return estudiantes;
+    }
+    
     /*public void editarEstudiante(){
         boolean cambiarNombre = false;
         Estudiante estudianteActual = retornarEstudiante("2024000");

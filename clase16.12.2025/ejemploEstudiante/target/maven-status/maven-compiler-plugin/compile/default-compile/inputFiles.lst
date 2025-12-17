@@ -1,15 +1,16 @@
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\ControladorAdministrador.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\ControladorEstudiante.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\ControladorLogin.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\ControladorPrincipal.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\EjemploEstudiante.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Bibliotecario.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Estudiante.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Libro.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Usuario.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\RepositorioBibliotecario.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\RepositorioEstudiante.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\RepositorioLibro.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\vistas\vistaAdmin.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\vistas\vistaEstudiante.java
-C:\Users\Moises Conde\Documents\NetBeansProjects\ejemploEstudiante\src\main\java\sc\ejemploestudiante\vistas\vistaLogin.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\controladores\ControladorAdministrador.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\controladores\ControladorEstudiante.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\controladores\ControladorLogin.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\controladores\ControladorPrincipal.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\EjemploEstudiante.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Bibliotecario.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Estudiante.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Libro.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\RepositorioBibliotecario.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\RepositorioEstudiante.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\RepositorioLibro.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\modelos\Usuario.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\vistas\AgregarEstudiante.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\vistas\vistaAdmin.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\vistas\vistaEstudiante.java
+C:\Users\Moises Conde\Documents\IPC1 DICIEMBRE 2025\Repositorio\clase16.12.2025\ejemploEstudiante\src\main\java\sc\ejemploestudiante\vistas\vistaLogin.java

@@ -17,6 +17,7 @@ public class ControladorPrincipal {
     private vistaLogin vLogin;
     private vistaAdmin vAdmin;
     private vistaEstudiante vEstudiante;
+    //private vistaAgregarEstudiante vAgregarEstudiante;
     
     // Controladores
    private ControladorLogin controladorLogin;
@@ -43,6 +44,8 @@ public class ControladorPrincipal {
        vLogin = new vistaLogin(controladorLogin);
        vAdmin = new vistaAdmin(controladorAdmin);
        vEstudiante = new vistaEstudiante(controladorEstudiante);
+       //vAgregarEstudiante = new vistaAgregarEstudiante(controladorAdmin);
+       
    }
    
    public void mostrarLogin(){

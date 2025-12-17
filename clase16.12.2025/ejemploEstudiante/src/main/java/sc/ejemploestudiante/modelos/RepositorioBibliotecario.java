@@ -55,4 +55,7 @@ public class RepositorioBibliotecario {
         return false;        
     }
 
+    public Bibliotecario[] todosBibliotecarios(){
+        return bibliotecarios;
+    }
 }

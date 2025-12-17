@@ -22,6 +22,7 @@ public class vistaEstudiante extends javax.swing.JFrame {
         this.controlador = controlador;
         initComponents();
         setLocationRelativeTo(null);
+        configurarTabla();
     }
 
     /**
