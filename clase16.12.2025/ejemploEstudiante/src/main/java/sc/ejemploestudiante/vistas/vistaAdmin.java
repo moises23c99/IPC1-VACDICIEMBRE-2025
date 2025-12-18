@@ -29,6 +29,25 @@ public class vistaAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         configurarTabla();
         configurarTablaEstudiantes();
+
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("Sin ordenar");
+        jComboBox1.addItem("Ordenar por ISBN (Burbuja)");
+        jComboBox1.addItem("Ordenar por Título (Selección)");
+        jComboBox1.addItem("Ordenar por Autor (Inserción)");
+        jComboBox1.addItem("Ordenar por Editorial (QuickSort)");
+        jComboBox1.addItem("Ordenar por Año (MergeSort)");
+
+        jComboBox1.addActionListener(e -> mostrarLibrosSegunCombo());
+
+        tablaEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 2) { // doble click (tiene que ser el derecho compañeros se me olvido decirlo)
+                    abrirEditorDesdeTabla();
+                }
+            }
+        });
+
     }
 
     /**
@@ -67,11 +86,13 @@ public class vistaAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLibros = new javax.swing.JTable();
         btnMostrarLibros = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaEstudiantes = new javax.swing.JTable();
         btnMostrarEstudiantes = new javax.swing.JButton();
         btnAgregarEstudiante = new javax.swing.JButton();
+        btnEstadoEstudiante = new javax.swing.JButton();
         menuBarAdministrador = new javax.swing.JMenuBar();
 
         jMenuItem1.setText("jMenuItem1");
@@ -234,23 +255,38 @@ public class vistaAdmin extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnMostrarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(336, 336, 336))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMostrarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(336, 336, 336))
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMostrarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,6 +322,13 @@ public class vistaAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnEstadoEstudiante.setText("Activar/Desactivar");
+        btnEstadoEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadoEstudianteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -293,9 +336,11 @@ public class vistaAdmin extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(440, 440, 440)
-                        .addComponent(btnAgregarEstudiante)
+                        .addGap(266, 266, 266)
+                        .addComponent(btnEstadoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAgregarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
                         .addComponent(btnMostrarEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -309,8 +354,10 @@ public class vistaAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMostrarEstudiantes, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(btnAgregarEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnMostrarEstudiantes, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addComponent(btnAgregarEstudiante))
+                    .addComponent(btnEstadoEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -349,7 +396,7 @@ public class vistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarEstudiantesActionPerformed
 
     private void btnMostrarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarLibrosActionPerformed
-        cargarLibrosEnTabla();
+        mostrarLibrosSegunCombo(); // usa lo que esté seleccionado
     }//GEN-LAST:event_btnMostrarLibrosActionPerformed
 
     private void btnMostrarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEstudiantesActionPerformed
@@ -363,11 +410,35 @@ public class vistaAdmin extends javax.swing.JFrame {
         cargarEstudiantesEnTabla();
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
 
-    private void cargarLibrosEnTabla() {
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btnEstadoEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadoEstudianteActionPerformed
+        int fila = tablaEstudiantes.getSelectedRow();
+
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un estudiante.");
+            return;
+        }
+
+        String carnet = tablaEstudiantes.getValueAt(fila, 1).toString(); // col 1 = Carnet
+        boolean activo = Boolean.parseBoolean(tablaEstudiantes.getValueAt(fila, 5).toString()); // col 5 = Activo
+
+        String mensaje = activo ? "¿Desea DESACTIVAR este estudiante?" : "¿Desea ACTIVAR este estudiante?";
+        int opc = javax.swing.JOptionPane.showConfirmDialog(this, mensaje, "Confirmar", javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (opc == javax.swing.JOptionPane.YES_OPTION) {
+            controlador.alternarEstadoEstudiante(carnet);
+            cargarEstudiantesEnTabla();
+        }
+    }//GEN-LAST:event_btnEstadoEstudianteActionPerformed
+
+    private void llenarTablaLibros(Libro[] listaLibros) {
         modeloLibros.setRowCount(0);
-        Libro[] libros = controlador.obtenerCatalogoLibros();
-        for (int i = 0; i < libros.length; i++) {
-            Libro libro = libros[i];
+
+        for (int i = 0; i < listaLibros.length; i++) {
+            Libro libro = listaLibros[i];
             if (libro != null) {
                 Object[] fila = {
                     libro.getISBN(),
@@ -380,7 +451,6 @@ public class vistaAdmin extends javax.swing.JFrame {
                     libro.getUbicacion()
                 };
                 modeloLibros.addRow(fila);
-
             }
         }
     }
@@ -419,7 +489,7 @@ public class vistaAdmin extends javax.swing.JFrame {
     }
 
     private void configurarTablaEstudiantes() {
-        String[] columnas = {"Nombre","Carnet","Carrera","Facultad","Semestre","Activo"};
+        String[] columnas = {"Nombre", "Carnet", "Carrera", "Facultad", "Semestre", "Activo"};
         modeloEstudiantes = new DefaultTableModel(columnas, 0);
         tablaEstudiantes.setModel(modeloEstudiantes);
     }
@@ -436,13 +506,56 @@ public class vistaAdmin extends javax.swing.JFrame {
                     estudiante.getCarrera(),
                     estudiante.getFacultad(),
                     estudiante.getSemestre(),
-                    estudiante.isActivo()
+                    (estudiante.isActivo() ? "Activo" : "Inactivo")
                 };
                 modeloEstudiantes.addRow(fila);
 
             }
         }
     }
+
+    private void mostrarLibrosSegunCombo() {
+        String opcion = (String) jComboBox1.getSelectedItem();
+        Libro[] lista;
+
+        if (opcion == null) {
+            return;
+        }
+
+        if (opcion.equals("Sin ordenar")) {
+            lista = controlador.obtenerCatalogoLibros();
+        } else if (opcion.equals("Ordenar por ISBN (Burbuja)")) {
+            lista = controlador.ordenarLibros_ISBN_Burbuja();
+        } else if (opcion.equals("Ordenar por Título (Selección)")) {
+            lista = controlador.ordenarLibros_Titulo_Seleccion();
+        } else if (opcion.equals("Ordenar por Autor (Inserción)")) {
+            lista = controlador.ordenarLibros_Autor_Insercion();
+        } else if (opcion.equals("Ordenar por Editorial (QuickSort)")) {
+            lista = controlador.ordenarLibros_Editorial_QuickSort();
+        } else { 
+            lista = controlador.ordenarLibros_Anio_MergeSort();
+        }
+
+        llenarTablaLibros(lista);
+    }
+
+    private void abrirEditorDesdeTabla() {
+        int fila = tablaEstudiantes.getSelectedRow();
+
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un estudiante.");
+            return;
+        }
+
+        String carnet = tablaEstudiantes.getValueAt(fila, 1).toString();
+
+        EditarEstudiante dlg = new EditarEstudiante(this, true, controlador, carnet);
+        dlg.setLocationRelativeTo(this);
+        dlg.setVisible(true);
+
+        cargarEstudiantesEnTabla();
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -453,9 +566,11 @@ public class vistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnCargar;
     private javax.swing.JButton btnCargarEstudiantes;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnEstadoEstudiante;
     private javax.swing.JButton btnMostrarEstudiantes;
     private javax.swing.JButton btnMostrarLibros;
     private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JDialog jDialog3;
